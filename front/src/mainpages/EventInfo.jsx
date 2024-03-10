@@ -93,6 +93,8 @@ const EventInfo = () => {
 
   return (
     <>
+  
+
     <div className="body">
         <div className="event" key={event.event_id}>
           <h2 className="eventname">{event.name}</h2>
