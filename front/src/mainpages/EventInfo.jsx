@@ -47,16 +47,12 @@ const EventTicket = ({ eventData }) => (
 );
 
 const downloadTicketPDF = (eventData) => {
-  const blob = (
-    <EventTicket eventData={eventData} />
-  ).toBlob();
-
-  const url = window.URL.createObjectURL(blob);
-  const a = document.createElement('a');
-  a.href = url;
-  a.download = 'event_ticket.pdf';
-  a.click();
-  window.URL.revokeObjectURL(url);
+  const link = document.createElement('a');
+    link.href = URL.createObjectURL(new Blob([<EventTicket eventData={eventData} />], { type: 'application/pdf' }));
+    link.download = "ticket.pdf";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
 };
 
 const EventInfo = () => {
